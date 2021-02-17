@@ -19,13 +19,11 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
     public DBOpenHelper(@Nullable Context context) {
         super(context, DBStructure.DB_NAME, null, DBStructure.DB_VERSION);
-        Log.e("arg","arg");
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_EVENTS_TABLE);
-        Log.e("yolo","yolo");
     }
 
     @Override
@@ -41,9 +39,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         contentValues.put(DBStructure.DATE, date);
         contentValues.put(DBStructure.MONTH, month);
         contentValues.put(DBStructure.YEAR, year);
-        contentValues.put(DBStructure.Notify, notify);
         database.insert(DBStructure.EVENT_TABLE_NAME,null,contentValues);
-        Log.e("ouchi", "ouchi");
     }
 
     public Cursor ReadEventpermonth(String month, String year, SQLiteDatabase database) {
