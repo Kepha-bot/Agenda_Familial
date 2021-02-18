@@ -18,8 +18,11 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -127,9 +130,53 @@ public class CustomCalendarView extends LinearLayout {
 
             }
         });
+
+        gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                String date = dateFormat.format(dateList.get(position));
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setCancelable(true);
+
+                View showView = LayoutInflater.from(parent.getContext()).inflate(R.layout.show_events_layout,null);
+
+                RecyclerView recyclerView= showView.findViewById(R.id.EventsRV);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(showView.getContext());
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setHasFixedSize(true);
+
+                EventRecyclerAdapter eventRecyclerAdapter = new EventRecyclerAdapter(showView.getContext(), CollectEventByDate(date));
+                recyclerView.setAdapter(eventRecyclerAdapter);
+                eventRecyclerAdapter.notifyDataSetChanged();
+                builder.setView(showView);
+                alertDialog=builder.create();
+                alertDialog.show();
+
+                return true;
+            }
+        });
     }
 
-    public CustomCalendarView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    private ArrayList<Events> CollectEventByDate(String date) {
+        ArrayList<Events> arrayList = new ArrayList<>();
+        dbOpenHelper = new DBOpenHelper(context);
+        SQLiteDatabase sqLiteDatabase = dbOpenHelper.getReadableDatabase();
+        Cursor cursor = dbOpenHelper.ReadEvents(date, sqLiteDatabase);
+        while (cursor.moveToNext()) {
+            String event = cursor.getString(cursor.getColumnIndex(DBStructure.EVENT));
+            String Time = cursor.getString(cursor.getColumnIndex(DBStructure.TIME));
+            String Date = cursor.getString(cursor.getColumnIndex(DBStructure.DATE));
+            String month = cursor.getString(cursor.getColumnIndex(DBStructure.MONTH));
+            String year = cursor.getString(cursor.getColumnIndex(DBStructure.YEAR));
+            Events events = new Events(event, Time, Date, month, year);
+            arrayList.add(events);
+        }
+        cursor.close();
+        dbOpenHelper.close();
+        return arrayList;
+    }
+
+    public CustomCalendarView(Context context, @NonNull AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
