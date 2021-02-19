@@ -1,53 +1,62 @@
 package com.example.agenda_familial;
 
 public class Events {
-    String Event, Time,Date,Month,Year;
 
-    public String getEvent() {
-        return Event;
+    String EVENT;
+    String TIME;
+    String DATE;
+    String MONTH;
+    String YEAR;
+
+    public Events(String EVENT, String TIME, String DATE, String MONTH, String YEAR) {
+        this.EVENT = EVENT;
+        this.TIME = TIME;
+        this.DATE = DATE;
+        this.MONTH = MONTH;
+        this.YEAR = YEAR;
+
     }
 
-    public void setEvent(String event) {
-        Event = event;
+    public String getEVENT() {
+        return EVENT;
     }
 
-    public String getTime() {
-        return Time;
+    public void setEVENT(String EVENT) {
+        this.EVENT = EVENT;
     }
 
-    public void setTime(String time) {
-        Time = time;
+    public String getTIME() {
+        return TIME;
     }
 
-    public String getDate() {
-        return Date;
+    public void setTIME(String TIME) {
+        this.TIME = TIME;
     }
 
-    public void setDate(String date) {
-        Date = date;
+    public String getDATE() {
+        return DATE;
     }
 
-    public String getMonth() {
-        return Month;
+    public void setDATE(String DATE) {
+        this.DATE = DATE;
     }
 
-    public void setMonth(String month) {
-        Month = month;
+    public String getMONTH() {
+        return MONTH;
     }
 
-    public String getYear() {
-        return Year;
+    public void setMONTH(String MONTH) {
+        this.MONTH = MONTH;
     }
 
-    public void setYear(String year) {
-        Year = year;
+    public String getYEAR() {
+        return YEAR;
     }
 
-    public Events(String event, String time, String date, String month, String year) {
-        this.Event = event;
-        this.Time = time;
-        this.Date = date;
-        this.Month = month;
-        this.Year = year;
+    public void setYEAR(String YEAR) {
+        this.YEAR = YEAR;
     }
+
+
+
 }

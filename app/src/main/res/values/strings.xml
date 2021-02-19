@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Projet2</string>
+    <string name="app_name">MyAgenda</string>
+    <string name="currentdate">CurrentDate</string>
+    <string name="alarm_me">Alarm Me</string>
 </resources>
