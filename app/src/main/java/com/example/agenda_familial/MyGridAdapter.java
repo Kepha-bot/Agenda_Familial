@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Locale;
 
 public class MyGridAdapter extends ArrayAdapter {
-
     List<Date> dates;
     Calendar currentDate;
     List<Events> events;
@@ -27,13 +26,10 @@ public class MyGridAdapter extends ArrayAdapter {
 
     public MyGridAdapter(Context context, List<Date> dates, Calendar currentDate, List<Events> events) {
         super(context, R.layout.single_cell_layout);
-
         this.dates=dates;
         this.currentDate=currentDate;
         this.events=events;
         inflater = LayoutInflater.from(context);
-
-
     }
 
     @Nullable
@@ -49,7 +45,6 @@ public class MyGridAdapter extends ArrayAdapter {
 
     @Override
     public int getCount() {
-
         return dates.size();
     }
 
@@ -65,15 +60,13 @@ public class MyGridAdapter extends ArrayAdapter {
         int currentMonth = currentDate.get(Calendar.MONTH)+1;
         int currentYear = currentDate.get(Calendar.YEAR);
 
-
-
         View view = convertView;
         if(view == null){
             view = inflater.inflate(R.layout.single_cell_layout, parent, false);
         }
 
         if (displayMonth == currentMonth && displayYear==currentYear) {
-            view.setBackgroundColor(getContext().getResources().getColor(R.color.green));
+            view.setBackgroundColor(getContext().getResources().getColor(R.color.darker_gray));
         }
         else {
             view.setBackgroundColor(Color.parseColor("#cccccc"));
@@ -90,14 +83,11 @@ public class MyGridAdapter extends ArrayAdapter {
                     && displayYear == eventCalendar.get(Calendar.YEAR)){
                 arrayList.add(events.get(i).getEVENT());
                 EventNumber.setText(arrayList.size()+" events");
-
-
             }
-
         }
-
         return view;
     }
+
     private Date convertStringToDate(String dateInString){
         java.text.SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.FRENCH);
         Date date = null;

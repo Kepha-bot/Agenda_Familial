@@ -4,28 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/design_default_color_primary_dark">
-
+    android:background="@color/darker_gray">
     <EditText
-        android:id="@+id/eventname"
+        android:id="@+id/EventName"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="20dp"
-        android:background="@android:color/background_dark"
+        android:background="@color/background_light"
         android:gravity="center"
         android:hint="Type Event"
         android:inputType="textShortMessage"
         tools:ignore="HardcodedText"
         android:autofillHints=""
-        tools:targetApi="o" />
-
+        tools:targetApi="o"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
         <ImageButton
-            android:id="@+id/seteventtime"
+            android:id="@+id/SetEventTime"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="10dp"
@@ -34,9 +32,8 @@
             tools:ignore="ContentDescription,HardcodedText"
             android:layout_weight="1"
             />
-
         <TextView
-            android:id="@+id/eventtime"
+            android:id="@+id/EventTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -48,12 +45,9 @@
             tools:ignore="HardcodedText"
             android:layout_weight="2"
             />
-
-
     </LinearLayout>
-
     <Button
-        android:id="@+id/addevent"
+        android:id="@+id/AddEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -61,8 +55,8 @@
         android:background="@android:color/white"
         android:text="Add Event"
         android:textAllCaps="false"
-        android:textColor="@color/design_default_color_primary_dark"
+        android:textColor="@color/dim_foreground_light_inverse"
         android:textStyle="bold"
-        tools:ignore="HardcodedText" />
-
+        tools:ignore="HardcodedText"
+        />
 </LinearLayout>

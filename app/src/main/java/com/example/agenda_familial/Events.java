@@ -1,7 +1,6 @@
 package com.example.agenda_familial;
 
 public class Events {
-
     String EVENT;
     String TIME;
     String DATE;
@@ -14,7 +13,6 @@ public class Events {
         this.DATE = DATE;
         this.MONTH = MONTH;
         this.YEAR = YEAR;
-
     }
 
     public String getEVENT() {
@@ -56,7 +54,4 @@ public class Events {
     public void setYEAR(String YEAR) {
         this.YEAR = YEAR;
     }
-
-
-
 }
